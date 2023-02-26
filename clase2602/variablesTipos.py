@@ -43,4 +43,4 @@ a=3
 b=3
 
 c=(a==b)
-print(c)
+print("este es booleano","=>",c)
