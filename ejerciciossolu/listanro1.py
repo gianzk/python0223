@@ -38,7 +38,15 @@ listaAnidad[2][0]
 
 
 
+###
+""" import sys
+import os
+print(sys.argv[0])
 
-
-
-
+def funcionRecursiva(path):
+    for i in os.listdir(path):
+        print(i)
+        if file or direc :
+            print
+        else :
+            funcionRecursiva(path+dir) """
