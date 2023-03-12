@@ -19,18 +19,17 @@ class Product:
         self.stock=stock
     
 class CarritoCompra:
-    listaProductos=[]
     def __init__(self):
         self.listaProductos=[]
         self.precioTotal=0
-    def agregarProducto(self,product:Product):
+    def agregarProducto(self,product:Product,cantidad=1):
         if self.validarStock(product):
             print("agregando producto")
             self.listaProductos.append(product)
-            print(self.listaProductos)
             product.updateStock(product.stock-1)
         else:
             print("el producto no tienen stock")
+         
     def quitarProdcut(self,product,id):
         pass
     def calcularPrecio(self):
@@ -54,9 +53,10 @@ message="""
     2)Mostrar Productos
     3)Salir
 """
+id=0
+carrito=CarritoCompra()
 while True:
-    carrito=CarritoCompra()
-    id=0
+
     print(message)
     opcion=int(input("ingrese la opcion a realizar:"))
     if opcion==1:
@@ -68,7 +68,7 @@ while True:
             stock=int(input("ingrese el stock del prodcuto:"))
             release=int(input("ingrese el release del prodcuto:"))
             px=Product(id,name,precio,tipo,stock,release)
-            carrito.agregarProducto(px)
+            carrito.agregarProducto()
         except Exception as Error:
                 print("sucedio un error")
         else:

@@ -74,8 +74,9 @@ p3=Pelicula('avengers',150,2019)
 
 c1=Catalogo()
 c1.agregar(p1)
+
 c1.agregar(p2)
 c1.agregar(p3)
-
+print(c1.peliculas)
 c1.mostrar()
 
