@@ -10,6 +10,7 @@ listPokemon=data['pokemon_entries']
 for i,value in enumerate(listPokemon):
     name=value['pokemon_species']['name']
     print(i,"=>",name)
+###apuntar los que participan
 
 ## hacer un buscador 
 #urlDemo="https://pokeapi.co/api/v2/pokemon/bulbasaur"

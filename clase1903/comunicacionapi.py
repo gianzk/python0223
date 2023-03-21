@@ -22,34 +22,45 @@ data=response.json() # nos brinda la información en formato JSON
 msg="""
     1)ver tipo de cambio
     2)comprar
-    3)vender
+    3)vender|
     4)salir
 """
 ##definimos la clase
-
-###############
+def getData():
+    import requests
+    url = 'https://api.apis.net.pe/v1/tipo-cambio-sunat'
+    response = requests.get(url)
+    data=response.json()
+    return data
 class CasaCambio:
-    def __init__(self) -> None:
-        pass
-    def vender():
-        pass
-    def comprar():
-        pass
+    def __init__(self,valor_compra:float,valor_venta:float) -> None:
+        self.venta=float(valor_venta)
+        self.compra=float(valor_compra)
+    def vender(self,montoSoles)->float:
+        return montoSoles/self.venta
+    def comprar(self,montoDolares)->float:
+        return montoDolares*self.compra
     def __str__(self) -> str:
-        pass
+        return f"el valor de la venta es {self.venta} y de compra es {self.compra}"
 
 
 while(True):
     print(msg)
     opcion=int(input("ingrese una opcion"))
-
+    data=getData()
+    tc=CasaCambio(data['compra'],data['venta'])
     if opcion==1:
-        pass
+        print(tc)
     if opcion==2:
-        pass
+        Montocomprar=float(input("ingrese el monto a comprar:"))
+        montoCliente=tc.comprar(Montocomprar)
+        print("dar ",montoCliente,"en dolares")
     if opcion==3:
-        pass
+        Montovender=float(input("ingrese el monto a vender:"))
+        montoCliente=tc.vender(Montovender)
+        print("dar ",montoCliente,"en soles")
     if opcion==4:
         pass
         print("gracias hasta luego")
         break
+
